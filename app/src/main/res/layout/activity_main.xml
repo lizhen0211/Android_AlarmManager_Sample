@@ -6,13 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/on_shot_alarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="30dp"
+        android:onClick="onSetOneShotAlarmClick"
+        android:text="设置一次性闹钟"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:onClick="onSetArepeatingAlarmClick"
+        android:text="设置一个重复闹钟"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/on_shot_alarm" />
 
 </android.support.constraint.ConstraintLayout>
