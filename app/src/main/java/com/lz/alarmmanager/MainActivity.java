@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
         pendingIntent.setAction("set One Shot Alarm");
         PendingIntent alarmPendingIntent = PendingIntent.getService(getApplicationContext(), 0, pendingIntent, 0);
         AlarmManager alarmMgr = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        final long triggerAtMillis = System.currentTimeMillis() + 5 * 1000;
+        final long triggerAtMillis = System.currentTimeMillis() + 3 * 1000;
         alarmMgr.set(AlarmManager.RTC_WAKEUP, triggerAtMillis, alarmPendingIntent);
     }
 
@@ -57,6 +57,26 @@ public class MainActivity extends Activity {
      * @param view
      */
     public void onSetArepeatingAlarmClick(View view) {
+        Intent intent = new Intent(getApplicationContext(), AlarmService.class);
+        intent.setAction("set A repeating Alarm");
+        PendingIntent alarmIntent = PendingIntent.getService(getApplicationContext(), 0, intent, 0);
+        // Hopefully your alarm will have a lower frequency than this!
+        /*AlarmManager alarmMgr = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmMgr.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_HALF_HOUR,
+                AlarmManager.INTERVAL_HALF_HOUR, alarmIntent);*/
 
+        AlarmManager alarmMgr = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        final long triggerTime = System.currentTimeMillis() + 3 * 1000;
+        final long interval = 2 * 60 * 1000;
+        alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, triggerTime, interval, alarmIntent);
+        //执行时间不固定
+        /*alarmMgr.setInexactRepeating();*/
+
+        //选择一种alarm类型
+        /*AlarmManager.ELAPSED_REALTIME 相对于系统启动时间，不唤醒。
+        AlarmManager.ELAPSED_REALTIME_WAKEUP 相对于系统启动时间，唤醒
+        AlarmManager.RTC 相对于当前时间，不唤醒。
+        AlarmManager.RTC_WAKEUP 相对于当前时间，唤醒。*/
     }
 }
