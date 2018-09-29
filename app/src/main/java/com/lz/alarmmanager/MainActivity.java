@@ -79,4 +79,17 @@ public class MainActivity extends Activity {
         AlarmManager.RTC 相对于当前时间，不唤醒。
         AlarmManager.RTC_WAKEUP 相对于当前时间，唤醒。*/
     }
+
+    public void onCancelRepeatAlarm(View view) {
+        Intent intent = new Intent(getApplicationContext(), AlarmService.class);
+        /*取消alarm使用AlarmManager.cancel()函数，传入参数是个PendingIntent实例。
+        该函数会将所有跟这个PendingIntent相同的Alarm全部取消，
+        怎么判断两者是否相同，android使用的是intent.filterEquals()，
+        具体就是判断两个PendingIntent的action、data、type、class和category是否完全相同。*/
+        //intent.setAction("cancel the repeating Alarm");
+        intent.setAction("set A repeating Alarm");
+        PendingIntent alarmIntent = PendingIntent.getService(this, 0, intent, 0);
+        AlarmManager alarm = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarm.cancel(alarmIntent);
+    }
 }

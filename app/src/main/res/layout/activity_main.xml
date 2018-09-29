@@ -19,6 +19,7 @@
 
 
     <Button
+        android:id="@+id/repeat_alarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -27,5 +28,16 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/on_shot_alarm" />
+
+    <Button
+        android:id="@+id/cancel_repeat_alarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:onClick="onCancelRepeatAlarm"
+        android:text="取消重复闹钟"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/repeat_alarm" />
 
 </android.support.constraint.ConstraintLayout>
