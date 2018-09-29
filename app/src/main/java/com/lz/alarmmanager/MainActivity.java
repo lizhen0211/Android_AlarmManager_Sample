@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 public class MainActivity extends Activity {
@@ -77,6 +78,7 @@ public class MainActivity extends Activity {
         PendingIntent alarmPendingIntent = PendingIntent.getService(getApplicationContext(), 0, pendingIntent, 0);
         AlarmManager alarmMgr = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         final long triggerAtMillis = System.currentTimeMillis() + DELAY;
+        Log.e("Alarm", "trriger time");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {//Android 6.0 中引入了低电耗模式和应用待机模式
             alarmMgr.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerAtMillis, alarmPendingIntent);
         } else if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {//Android 4.4，传递给此方法的触发时间被视为不精确
@@ -110,7 +112,7 @@ public class MainActivity extends Activity {
 
         AlarmManager alarmMgr = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         final long triggerTime = System.currentTimeMillis() + DELAY;
-
+        Log.e("Alarm", "trriger time");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {//Android 6.0 中引入了低电耗模式和应用待机模式
             alarmMgr.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerTime, alarmIntent);

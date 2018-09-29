@@ -58,7 +58,7 @@ public class AlarmService extends Service {
         PendingIntent alarmIntent = PendingIntent.getService(getApplicationContext(), 0, repeatIntent, 0);
 
         AlarmManager alarmMgr = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        final long triggerTime = System.currentTimeMillis() + MainActivity.DELAY;
+        final long triggerTime = System.currentTimeMillis() + MainActivity.INTERVAL;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {//Android 6.0 中引入了低电耗模式和应用待机模式
             alarmMgr.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerTime, alarmIntent);
